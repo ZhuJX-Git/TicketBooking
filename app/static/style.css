@@ -1,0 +1,43 @@
+/* 通用样式 */
+.title{
+    height: 50px;
+    margin-top: 20px;
+}
+/* 导航栏相关样式 */
+#header{
+    color: white;
+    text-align: center;
+    padding: 5px;
+    margin-top: 0px;
+    height: 60px;
+}
+.headerTitle{
+    width: 30%;
+    margin: auto;
+    display: inline-block;
+    text-align: left;
+    float: left;
+}
+.navigation{
+    width: 60%;
+    display: inline-block;
+    float: left;
+}
+.navigationList{
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+}
+.navigationItem{
+    font-size: 1em;
+    font-weight: 100;
+    text-align: center;
+    margin-left: 20px;
+    cursor: pointer;
+}
+/* 注册相关样式 */
+.registerForm{
+    margin-left: 20px;
+    margin-top: 10px;
+    display: inline-block;
+}

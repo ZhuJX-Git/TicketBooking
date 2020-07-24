@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="../../static/style.css"> <!-- 引用自定义的css -->
+    <!-- 引用bootstrap -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<!-- 标题 -->
+<div id="header" style="color: black">
+    <div class="headerTitle">
+        <h1 style="color: gray">Ticket Booking</h1>
+    </div>
+    <!-- 导航栏 -->
+    <div class="navigation">
+        <div>
+            <ul class="navigationList">
+                <a class="navigationItem"><span>首页</span></a>
+                <a class="navigationItem"><span>机票查询</span></a>
+                <a class="navigationItem"><span>用户注册</span></a>
+                <a class="navigationItem"><span>用户登录</span></a>
+                <a class="navigationItem"><span>用户中心</span></a>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+<!-- 主体部分 -->
+<div>
+    <div class="title">
+        <h3 style="text-align: center">用户注册</h3>
+    </div>
+    <div class="container" style="text-align: center">
+        <form method="post" action="{{ url_for('web.register') }}" style="text-align: center">
+            <!-- 通过一个table显示所有的信息， 由于在web.py中对应的方法中将form数据放入了html，因此可以直接使用 -->
+            <table style="margin: auto">
+                <tr style="height: 30px">
+                    <td style="text-align: center">{{ form.username.label }}</td>
+                    <td>{{ form.username(style="width:200px;height:30px") }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td style="text-align: center">{{ form.password.label }}</td>
+                    <td>{{ form.password(style="width:200px;height:30px", id="pwd") }}</td>
+                </tr>
+                <tr style="height: 30px">
+                    <td style="text-align: center;">{{ form.repeatPassword.label }}</td>
+                    <td>{{ form.repeatPassword(style="width:200px;height:30px", id="repwd") }}</td>
+                </tr>
+            </table>
+            <br />
+            <!-- 当点击注册按钮时，会触发下面定义的javascript函数 -->
+            <input type="submit" class="btn btn-primary" value="注册" onclick="return checkInfo()">
+        </form>
+    </div>
+</div>
+
+<!-- 编写一个script脚本 -->
+<script>
+    function checkInfo() {
+        <!-- 如果两个密码框中的输入不相同的话，给出一个提示框进行警告 -->
+        var pwd = document.getElementById('pwd').value;
+        var repwd = document.getElementById('repwd').value;
+
+        if (pwd != repwd) {
+            alert('请输入一致的密码')
+            return false;
+        }
+        return true;
+    }
+</script>
+<!-- 下面是对应在web.py中调用的flash方法，会在页面中出现提示框，内容则是flash中定义的内容 -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+    {% for message in messages %}
+        alert('{{ message }}')
+    {% endfor %}
+    </script>
+  {% endif %}
+{% endwith %}
+</body>
+</html>
