@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticket Manage</title>
+</head>
+<body>
+{% include 'admin/header.html' %}
+{% include 'admin/menu.html' %}
+<!-- 右侧边栏 -->
+<div style="width: 85%; height: auto; float: right">
+    <div style="text-align: center">
+        <form style="width: 80%" action="{{ url_for('admin.ticket') }}" method="post">
+            <table style="margin: 10px; width: 70%">
+                <!-- 单程/往返 -->
+                <tr style="height: 50px">
+                    <td>{{ form.one_or_round.label }}</td>
+                    <td>{{ form.one_or_round }}</td>
+                </tr>
+                <!-- 航班名称 -->
+                <tr style="height: 50px">
+                    <td>{{ form.name.label }}</td>
+                    <td>{{ form.name }}</td>
+                </tr>
+                <!-- 航空公司 -->
+                <tr style="height: 50px">
+                    <td>{{ form.company_name.label }}</td>
+                    <td>{{ form.company_name(style="width: 200px") }}</td>
+                </tr>
+                <!-- 出发城市 -->
+                <tr style="height: 50px">
+                    <td>{{ form.depart_city.label }}</td>
+                    <td>{{ form.depart_city(style="width: 200px") }}</td>
+                </tr>
+                <!-- 出发机场 -->
+                <tr style="height: 50px">
+                    <td>{{ form.depart_airport.label }}</td>
+                    <td>{{ form.depart_airport(style="width: 200px") }}</td>
+                </tr>
+                <!-- 到达城市 -->
+                <tr style="height: 50px">
+                    <td>{{ form.arrive_city.label }}</td>
+                    <td>{{ form.arrive_city(style="width: 200px") }}</td>
+                </tr>
+                <!-- 到达机场 -->
+                <tr style="height: 50px">
+                    <td>{{ form.arrive_airport.label }}</td>
+                    <td>{{ form.arrive_airport(style="width: 200px") }}</td>
+                </tr>
+                <!-- 出发时间 -->
+                <tr style="height: 50px">
+                    <td>{{ form.depart_date.label }}</td>
+                    <td>{{ form.depart_date(style="width: 200px", onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}") }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.depart_time.label }}</td>
+                    <td>{{ form.depart_time(style="width: 200px", onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'hh:mm';}") }}</td>
+                </tr>
+                <!-- 到达时间 -->
+                <tr style="height: 50px">
+                    <td>{{ form.arrive_date.label }}</td>
+                    <td>{{ form.arrive_date(style="width: 200px", onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}") }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.arrive_time.label }}</td>
+                    <td>{{ form.arrive_time(style="width: 200px", onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'hh:mm';}") }}</td>
+                </tr>
+                <!-- 返程时间 -->
+                <tr style="height: 50px">
+                    <td>{{ form.return_date.label }}</td>
+                    <td>{{ form.return_date(style="width: 200px", onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}") }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.return_time.label }}</td>
+                    <td>{{ form.return_time(style="width: 200px", onfocus="this.value = '';", onblur="if (this.value == '') {this.value = 'hh:mm';}") }}</td>
+                </tr>
+                <!-- 经济舱信息 -->
+                <tr style="height: 50px">
+                    <td>{{ form.economy_class_price.label }}</td>
+                    <td>{{ form.economy_class_price(style="width: 200px") }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.economy_class_num.label }}</td>
+                    <td>{{ form.economy_class_num(style="width: 200px") }}</td>
+                </tr>
+                <!-- 商务舱信息 -->
+                <tr style="height: 50px">
+                    <td>{{ form.business_class_price.label }}</td>
+                    <td>{{ form.business_class_price(style="width: 200px") }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.business_class_num.label }}</td>
+                    <td>{{ form.business_class_num(style="width: 200px") }}</td>
+                </tr>
+                <!-- 头等舱信息 -->
+                <tr style="height: 50px">
+                    <td>{{ form.first_class_price.label }}</td>
+                    <td>{{ form.first_class_price(style="width: 200px") }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.first_class_num.label }}</td>
+                    <td>{{ form.first_class_num(style="width: 200px") }}</td>
+                </tr>
+            </table>
+            <input class="btn btn-primary" type="submit" value="提交">
+        </form>
+    </div>
+</div>
+<!-- 警告框 -->
+{% include 'flash.html' %}
+</body>
+</html>

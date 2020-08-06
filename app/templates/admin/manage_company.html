@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Manage</title>
+</head>
+<body>
+{% include 'admin/header.html' %}
+<!-- 主体部分 -->
+<!-- 左侧显示栏 -->
+{% include 'admin/menu.html' %}
+<!-- 右侧显示栏 -->
+<div style="width: 85%; height: auto; float: right">
+    <div>
+        <table style="margin-top: 20px; width: 60%; text-align: center">
+            <tr>
+                <td>航空公司英文名称</td>
+                <td>中文名称</td>
+                <td>删除</td>
+            </tr>
+            <!-- 显示后台传来的所有航空公司信息 -->
+            {% for company in companies %}
+                <tr>
+                    <td>{{ company.english_name }}</td>
+                    <td>{{ company.chinese_name }}</td>
+                    <td>
+                        <form action="{{ url_for('admin.company_change', english_name=company.english_name) }}" method="get">
+                            <input class="btn btn-primary" type="submit" value="删除">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div style="width: 70%; margin: 10px;">
+        <h5 style="text-align: left">添加航空公司</h5>
+        <form action="{{ url_for('admin.company') }}" method="post">
+            <table style="margin: 10px;">
+                <tr style="height: 50px;">
+                    <td>{{ form.english_name.label }}</td> <td>{{ form.english_name }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.chinese_name.label }}</td> <td>{{ form.chinese_name }}</td>
+                </tr>
+            </table>
+            <input style="margin-left: 10px" class="btn btn-primary" type="submit" value="提交">
+        </form>
+    </div>
+</div>
+<!-- 警告框 -->
+{% include 'flash.html' %}
+</body>
+</html>

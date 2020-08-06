@@ -3,34 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="../../static/style.css"> <!-- 引用自定义的css -->
-    <!-- 引用bootstrap -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-<!-- 标题 -->
-<div id="header" style="color: black">
-    <div class="headerTitle">
-        <h1 style="color: gray">Ticket Booking</h1>
-    </div>
-    <!-- 导航栏 -->
-    <div class="navigation">
-        <div>
-            <ul class="navigationList">
-                <a class="navigationItem"><span>首页</span></a>
-                <a class="navigationItem"><span>机票查询</span></a>
-                <a class="navigationItem"><span>用户注册</span></a>
-                <a class="navigationItem"><span>用户登录</span></a>
-                <a class="navigationItem"><span>用户中心</span></a>
-            </ul>
-        </div>
-    </div>
-</div>
-<br />
+<!-- 引用导航栏 -->
+{% include "web/navigation.html" %}
 <!-- 主体部分 -->
 <div>
     <div class="title">
@@ -49,8 +26,8 @@
                     <td>{{ form.password(style="width:200px;height:30px", id="pwd") }}</td>
                 </tr>
                 <tr style="height: 30px">
-                    <td style="text-align: center;">{{ form.repeatPassword.label }}</td>
-                    <td>{{ form.repeatPassword(style="width:200px;height:30px", id="repwd") }}</td>
+                    <td style="text-align: center;">{{ form.repeat_password.label }}</td>
+                    <td>{{ form.repeat_password(style="width:200px;height:30px", id="repwd") }}</td>
                 </tr>
             </table>
             <br />

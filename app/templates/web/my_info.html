@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Info</title>
+</head>
+
+<body>
+<!-- 引用导航栏 -->
+{% include "web/navigation.html" %}
+<!-- 主体部分 -->
+<div>
+    <!-- 左侧的div显示选项 -->
+    <div style="width: 15%; float: left; height: auto">
+        <div style="float: right; width: 60%; height: 600px; border: 1px solid #000000">
+            <table style="margin: auto">
+                <tr style="height: 30px">
+                    <td><a href="{{ url_for('web.info') }}" style="text-decoration: none; color: black"><span>个人信息</span></a></td>
+                </tr>
+                <tr style="height: 30px">
+                    <td><a href="{{ url_for('web.my_order') }}" style="text-decoration: none; color: black"><span>我的订单</span></a></td>
+                </tr>
+                <tr style="height: 30px">
+                    <td><a href="{{ url_for('web.logout') }}" style="text-decoration: none; color: black"><span>退出登录</span></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- 右侧的div显示用户订单信息 -->
+    <div style="width: 80%; float: right; height: 600px; border: 1px solid #000000">
+        <h3 style="font-size: 1em; margin-left: 20px;">我的信息</h3>
+        <div style="margin-left: 20px; margin-top: 10px; width: 30%; display: inline-block">
+            <form action="{{ url_for('web.info') }}" method="post" style="margin: 10px">
+                <table style="margin: 10px; text-align: center">
+                    <tr style="height: 50px">
+                        <td>{{ form.password.label }}</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>{{ form.repeat_password.label }}</td>
+                        <td>{{ form.repeat_password }}</td>
+                    </tr>
+                </table>
+                <input class="btn btn-primary" type="submit" style="margin-left: 100px" value="提交修改">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

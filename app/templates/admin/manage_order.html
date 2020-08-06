@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Manage</title>
+</head>
+<body>
+{% include 'admin/header.html' %}
+{% include 'admin/menu.html' %}
+<!-- 右侧边栏 -->
+<div style="width: 85%; height: auto; float: right">
+    <div>
+        <table style="margin: 10px; width: 70%; text-align: center">
+            <tr>
+                <td>订单编号</td>
+                <td>订单路线</td>
+                <td>出发时间</td>
+                <td>舱位等级</td>
+                <td>乘客姓名</td>
+                <td>确认</td>
+                <td>删除</td>
+            </tr>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.order_id }}</td>
+                    <td>{{ order.route }}</td>
+                    <td>{{ order.depart_time }}</td>
+                    <td>{{ order.ticket_type }}</td>
+                    <td>{{ order.username }}</td>
+                    <td>
+                        <form action="{{ url_for('admin.order', order_id = order.order_id) }}" method="post">
+                            <input class="btn btn-primary" type="submit" value="确认">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="{{ url_for('admin.order_delete', order_id = order.order_id) }}" method="post">
+                            <input class="btn btn-primary" type="submit" value="删除">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<!-- 警告框 -->
+{% include 'flash.html' %}
+</body>
+</html>

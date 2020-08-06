@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<!-- 下面是对应在视图方法中调用的flash方法，会在页面中出现提示框，内容则是flash中定义的内容 -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+    {% for message in messages %}
+        alert('{{ message }}')
+    {% endfor %}
+    </script>
+  {% endif %}
+{% endwith %}
+</body>
+</html>

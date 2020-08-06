@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="../../static/style.css"> <!-- 引用自定义的css -->
+    <!-- 引用bootstrap -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<!-- 标题 -->
+<div id="header" style="color: black">
+    <div class="headerTitle">
+        <h1 style="color: gray">Ticket Booking</h1>
+    </div>
+    <!-- 导航栏 -->
+    <div class="navigation">
+        <div>
+            <ul class="navigationList">
+                <a class="navigationItem" href="{{ url_for('web.home') }}" style="text-decoration: none; color: black"><span>首页</span></a>
+                <a class="navigationItem" href="{{ url_for('web.search') }}" style="text-decoration: none; color: black"><span>机票查询</span></a>
+                <a class="navigationItem" href="{{ url_for('web.register') }}" style="text-decoration: none; color: black"><span>用户注册</span></a>
+                <a class="navigationItem" href="{{ url_for('web.login') }}" style="text-decoration: none; color: black"><span>用户登录</span></a>
+                <a class="navigationItem" href="{{ url_for('web.info') }}" style="text-decoration: none; color: black"><span>用户中心</span></a>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
+</body>
+</html>

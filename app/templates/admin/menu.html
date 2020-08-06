@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<!-- 由于在后台管理系统中标题部分和左侧的菜单栏部分是绝大部分网页公用的，因此独立成可复用的网页通过include的形式包含在其他网页中 -->
+<!-- 标题 -->
+<div style="width: 100%; height: auto; margin: 0px 0px">
+    <h1 style="text-align: center">后台管理</h1>
+    <div style="text-align: center">
+        <ul>
+            <a href="{{ url_for('web.home') }}"><span>网站首页</span></a>
+            <a href="{{ url_for('admin.login') }}"><span>退出登录</span></a>
+        </ul>
+    </div>
+</div>
+<!-- 左侧菜单栏 -->
+<div style="width: 13%; height: 800px; float: left; margin: 0px; background: gray">
+    <div>
+        <div><h2>管理菜单</h2></div>
+        <div>
+            <div><h3>管理员管理</h3></div>
+            <div>
+                <ul>
+                    <a class="admin_manage_item" href="{{ url_for('admin.admin_manage') }}"><span>编辑管理员</span></a>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div><h3>机票管理</h3></div>
+            <div>
+                <ul>
+                    <a class="business_menu_item" href="{{ url_for('admin.company') }}"><span>航空公司管理</span></a>
+                    <a class="business_menu_item" href="{{ url_for('admin.ticket') }}"><span>机票管理</span></a>
+                    <a class="business_menu_item" href="{{ url_for('admin.order') }}"><span>订单管理</span></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

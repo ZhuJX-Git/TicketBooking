@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Manage</title>
+</head>
+<body>
+<!-- 引用header -->
+{% include 'admin/header.html' %}
+<!-- 主体部分 -->
+<!-- 左侧显示菜单栏 -->
+{% include 'admin/menu.html' %}
+<!-- 右侧显示具体信息 -->
+<div style="width: 85%; height: auto; float: right">
+    <div>
+        <table style="margin: 10px; width: 40%; text-align: center">
+            <tr>
+                <td>管理员用户名</td>
+                <td>管理员类型</td>
+                <td>删除</td>
+            </tr>
+            <!-- 显示后台传来的所有admin用户信息 -->
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <!-- 通过url_for方法可以在url中携带参数username，这个参数可以在后台被识别 -->
+                        <form action="{{ url_for('admin.admin_change', username = user.username) }}" method="get">
+                            <input class="btn btn-primary" type="submit" value="删除">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div style="width: 70%; margin: 10px;">
+        <h5 style="text-align: left">添加管理员用户</h5>
+        <form action="{{ url_for('admin.admin_add') }}" method="post">
+            <table style="margin: 10px">
+                <tr style="height: 50px">
+                    <td>{{ form.username.label }}</td> <td>{{ form.username }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.password.label }}</td> <td>{{ form.password }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.repeat_password.label }}</td> <td>{{ form.repeat_password }}</td>
+                </tr>
+            </table>
+            <input style="margin-left: 10px" class="btn btn-primary" type="submit" value="提交">
+        </form>
+    </div>
+</div>
+<!-- 警告框 -->
+{% include 'flash.html' %}
+</body>
+</html>
+

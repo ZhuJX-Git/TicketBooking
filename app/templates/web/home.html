@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<!-- 引用导航栏 -->
+{% include "web/navigation.html" %}
+<!-- 主体部分 -->
+<div>
+    <div style="width: 50%; float: right; color: #b1b1b1">
+        <div style="margin-top: 100px; margin-right: 100px; width: 80%; background: rgba(255, 255, 255, 0.7)">
+            <form action="{{ url_for('web.search') }}" method="post">
+                <div style="float: left; width: 40%; color: #b1b1b1; margin-left: 20px">
+                    <h3>{{ form.depart_city.label }}</h3>
+                    {{ form.depart_city }}
+                </div>
+                <div style="float: right; width: 40%">
+                    <h3>{{ form.arrive_city.label }}</h3>
+                    {{ form.arrive_city }}
+                </div>
+                <div style="clear: both"></div>
+                <div style="float: left; width: 100%; margin-left: 20px; margin-top: 10px">
+                    <div>
+                        <h3>{{ form.depart_date.label }}</h3>
+                        <!-- onfocus和onblur对应的是选中这个输入框和非选中时显示的内容，启动项目后结合前端页面的显示一起查看 -->
+                        {{ form.depart_date(onfocus="this.value = '';",onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}", style="width: 400px") }}
+                    </div>
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="float: left; width: 40%; height: auto; margin-left: 20px; margin-top: 10px">
+                    <h3>{{ form.one_or_round.label }}</h3>
+                    {{ form.one_or_round }}
+                </div>
+                <div style="clear: both;"></div>
+                <div style="margin-top: 30px; margin-left: 20px; float: left">
+                    <input class="btn btn-primary" type="submit" value="搜索航班">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

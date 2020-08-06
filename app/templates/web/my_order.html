@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders</title>
+</head>
+<body>
+{% include 'web/navigation.html' %}
+<div>
+    <div style="width: 15%; float: left; height: auto">
+        <div style="float: right; width: 60%; height: 600px; border: 1px solid #000000">
+            <table style="margin: auto">
+                <tr style="height: 30px">
+                    <td><a href="{{ url_for('web.info') }}" style="text-decoration: none; color: black"><span>个人信息</span></a></td>
+                </tr>
+                <tr style="height: 30px">
+                    <td><a href="{{ url_for('web.my_order') }}" style="text-decoration: none; color: black"><span>我的订单</span></a></td>
+                </tr>
+                <tr style="height: 30px">
+                    <td><a href="{{ url_for('web.logout') }}" style="text-decoration: none; color: black"><span>退出登录</span></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="width: 80%; float: right; height: 600px; border: 1px solid #000000">
+        <h3 style="font-size: 1em; margin-left: 20px;">我的订单</h3>
+        <div>
+            <table style="margin: 10px; width: 80%">
+                <tr style="height: 50px; text-align: center;">
+                    <td>订单号</td>
+                    <td>机票类型</td>
+                    <td>路线</td>
+                    <td>出发时间</td>
+                    <td>状态</td>
+                </tr>
+                {% for order in orders %}
+                    <tr style="height: 50px; text-align: center">
+                        <td>{{ order.order_id }}</td>
+                        <td>{{ order.ticket_type }}</td>
+                        <td>{{ order.route }}</td>
+                        <td>{{ order.depart_time }}</td>
+                        <td>{{ order.status }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

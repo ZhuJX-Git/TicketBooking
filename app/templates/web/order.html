@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order</title>
+</head>
+<body>
+{% include 'web/navigation.html' %}
+<div style="width: 80%; float: right">
+    <div style="margin-top: 100px; margin-right: 100px">
+        <form action="{{ url_for('web.save_order', ticket_name=ticket_name) }}" method="post">
+            <a style="display: none">{{ form.ticket_id }}</a>
+            <table style="margin: auto">
+                <tr style="height: 50px">
+                    <td>{{ form.order_id.label }}</td>
+                    <td>{{ form.order_id }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.ticket_type.label }}</td>
+                    <td>{{ form.ticket_type }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.depart_time.label }}</td>
+                    <td>{{ form.depart_time }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.route.label }}</td>
+                    <td>{{ form.route }}</td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>{{ form.name.label }}</td>
+                    <td>{{ form.name }}</td>
+                </tr>
+            </table>
+            <input class="btn btn-primary" style="margin-left: 40%" type="submit" value="确认订单">
+        </form>
+    </div>
+</div>
+</body>
+</html>
